@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MAESTRO · Arm A · exp_v2 dashboard</title>
+  <link rel="stylesheet" href="assets/dashboard.css">
+  <script>
+    (function () { var t = null; try { t = localStorage.getItem('maestro-expv2-dash-theme'); } catch (e) {} if (t !== 'light') document.documentElement.setAttribute('data-theme', 'dark'); })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#stages">Skip to stage details</a>
+
+  <header class="masthead">
+    <div class="wrap masthead-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32"><rect x="1" y="1" width="30" height="30" rx="8" fill="#ffffff"/><path d="M8 23V10l8 8 8-8v13" fill="none" stroke="#14213d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div>
+          <div class="eyebrow" id="mh-eyebrow">MAESTRO · Arm A</div>
+          <h1 id="mh-title">exp_v2 run dashboard</h1>
+        </div>
+      </div>
+      <div class="mh-chips" id="mh-chips"></div>
+    </div>
+  </header>
+
+  <nav class="topnav" aria-label="Sections">
+    <div class="wrap topnav-inner">
+      <a href="#pipeline">Pipeline</a>
+      <a href="#overview">Overview</a>
+      <a href="#answer">Answer</a>
+      <a href="#ladder">FEM ladder</a>
+      <a href="#stages">Stages</a>
+      <a href="#gates">Gates</a>
+      <a href="#log">Log</a>
+      <a href="#sources">Sources</a>
+      <span class="nav-spacer"></span>
+      <button type="button" class="theme-btn" id="theme-btn" aria-label="Switch colour theme">Dark</button>
+    </div>
+  </nav>
+
+  <div id="demo-banner" class="demo-banner" hidden>
+    <div class="wrap">Example data for checking the layout. <strong>These are not run results.</strong> <a href="index.html">Leave demo mode</a></div>
+  </div>
+
+  <main class="wrap" id="main">
+    <noscript><p class="noscript">This dashboard needs JavaScript. The run scope is in the MAESTRO docs repository under decisions/exp_v2.</p></noscript>
+
+    <section id="pipeline" class="section">
+      <div class="section-head"><h2>Pipeline and progress</h2><p class="section-sub">Stages in run order. Select a stage for its detail. Diamonds are human gates.</p></div>
+      <div id="pl-body"></div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="section-head"><h2>Overview</h2><p class="section-sub" id="ov-sub"></p></div>
+      <div id="ov-body"></div>
+    </section>
+
+    <section id="answer" class="section">
+      <div class="section-head"><h2>The answer</h2><p class="section-sub">Does the GC-DFT verdict hold as the FEM gets more realistic?</p></div>
+      <div id="an-body"></div>
+    </section>
+
+    <section id="ladder" class="section">
+      <div class="section-head"><h2>FEM ladder</h2><p class="section-sub">The same sensitivity analysis runs on every rung. The top rung is validated against experiment in S03.</p></div>
+      <div id="ld-body"></div>
+    </section>
+
+    <section id="stages" class="section">
+      <div class="section-head"><h2>Stage detail</h2><p class="section-sub">Goal, outputs, key numbers, plots, figures, files and run details per stage.</p></div>
+      <div id="st-body"></div>
+    </section>
+
+    <section id="gates" class="section">
+      <div class="section-head"><h2>Gates and human input</h2><p class="section-sub">At each gate the reviewer looks at the stage result and the next stage's plan, then answers continue, adjust or repeat.</p></div>
+      <div id="gt-body"></div>
+    </section>
+
+    <section id="log" class="section">
+      <div class="section-head"><h2>Log</h2><p class="section-sub">Meetings, decisions, stage events, gate verdicts and interventions. Outlined entries are planned.</p></div>
+      <div id="lg-body"></div>
+    </section>
+
+    <section id="sources" class="section">
+      <div class="section-head"><h2>Sources</h2><p class="section-sub">Documents this dashboard is built from. Paths are relative to MAESTRO_docs.</p></div>
+      <div id="sr-body"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap" id="footer-body"></div>
+  </footer>
+
+  <div id="tip" class="tip" role="tooltip" hidden></div>
+  <div id="lightbox" class="lightbox" hidden>
+    <figure class="lightbox-inner">
+      <button type="button" class="lightbox-close" aria-label="Close">×</button>
+      <img alt="">
+      <figcaption></figcaption>
+    </figure>
+  </div>
+
+  <script src="data/run_data.js"></script>
+  <script src="assets/dashboard.js"></script>
+</body>
+</html>
